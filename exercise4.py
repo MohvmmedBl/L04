@@ -1,12 +1,12 @@
 import os
 
 
-ADMIN_PASSWORD = "admin123"
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "")
 
 
 def check_admin(password):
     """true if the password is the admin password"""
-    return password == ADMIN_PASSWORD
+    return ADMIN_PASSWORD != "" and password == ADMIN_PASSWORD
 
 
 def find_user(db, username):
